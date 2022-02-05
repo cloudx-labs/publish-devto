@@ -14,7 +14,7 @@ See [action.yml](action.yml).
 steps:
 - uses: actions/checkout@v2
 - name: Publish articles on dev.to
-  uses: sinedied/publish-devto@v2
+  uses: cloudx-labs/publish-devto@v3
   with:
     # Your dev.to personal API key to publish and update articles.
     # See https://docs.dev.to/api/#section/Authentication/api_key
@@ -40,6 +40,7 @@ You can use [this template repository](https://github.com/sinedied/devto-github-
 ## Using a custom committer
 
 You can specify who you want to appear in the commits made by this action by adding these environment variables to the action:
+
 ```yaml
   env:
     GIT_COMMITTER_NAME: your_name

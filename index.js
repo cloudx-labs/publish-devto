@@ -24,7 +24,7 @@ async function run() {
       })
     );
 
-    await publishArticles({
+    const output = await publishArticles({
       filesGlob,
       devtoKey,
       githubToken,
@@ -32,6 +32,8 @@ async function run() {
       useConventionalCommits,
       dryRun
     });
+    
+    core.setOutput('result_json', JSON.stringify(output));
   } catch (error) {
     core.setFailed(error.toString());
   }

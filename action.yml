@@ -30,3 +30,6 @@ inputs:
     description: 'Do not make actual changes on dev.to'
     required: false
     default: false
+outputs:
+  result_json:
+    description: 'Result as a json string'

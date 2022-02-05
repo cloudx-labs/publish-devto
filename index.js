@@ -35,7 +35,7 @@ async function run() {
     });
 
     core.setOutput('result_json', JSON.stringify(output));
-    core.setOutput('result_summary_table', JSON.stringify({
+    core.setOutput('result_summary_table_json', JSON.stringify({
       content: showResultsTable(output)
     }));
   } catch (error) {

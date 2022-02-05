@@ -1,5 +1,6 @@
 import core from '@actions/core';
 import { publishArticles } from './lib/publish.js';
+import { table, getBorderCharacters } from 'table';
 
 async function run() {
   try {
@@ -32,11 +33,26 @@ async function run() {
       useConventionalCommits,
       dryRun
     });
-    
+
     core.setOutput('result_json', JSON.stringify(output));
+    core.setOutput('result_summary_table', showResultsTable(output))
   } catch (error) {
     core.setFailed(error.toString());
   }
+}
+
+function showResultsTable(results) {
+  const rows = results.map((r) => [r.status, r.publishedStatus, r.title]);
+  const usedWidth = 27; // Status columns + padding
+  const availableWidth = 80;
+  const maxTitleWidth = Math.max(availableWidth - usedWidth, 8);
+
+  return table(rows, {
+      drawHorizontalLine: () => false,
+      border: getBorderCharacters('void'),
+      columnDefault: { paddingLeft: 0, paddingRight: 1 },
+      columns: { 2: { truncate: maxTitleWidth, width: maxTitleWidth } }
+    }).slice(0, -1);
 }
 
 run();

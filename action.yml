@@ -33,3 +33,5 @@ inputs:
 outputs:
   result_json:
     description: 'Result as a json string'
+  result_summary_table:
+    description: 'Summary of actions formatted as a table'

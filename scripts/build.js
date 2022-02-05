@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import process from 'node:process';
 import ncc from '@vercel/ncc';
 
+fs.rmSync('dist', { recursive: true, force: true });
 fs.mkdirSync('dist');
 
 ncc(path.join(process.cwd(), 'index.js'), {

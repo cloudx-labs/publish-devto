@@ -12,7 +12,7 @@
   "scripts": {
     "lint": "xo",
     "lint:fix": "xo --fix",
-    "build": "rm -rf dist && node scripts/build.js",
+    "build": "node scripts/build.js",
     "test": "xo",
     "commit:build": "git add dist && git commit -m \"chore: update build\" && git push",
     "tag": "git tag -d v3 && git push --delete origin v3 && git tag -a v3 -m 'v3' && git push --tags",

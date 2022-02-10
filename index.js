@@ -1,6 +1,6 @@
 import core from '@actions/core';
-import { publishArticles } from './lib/publish.js';
 import { table, getBorderCharacters } from 'table';
+import { publishArticles } from './lib/publish.js';
 
 async function run() {
   try {
@@ -35,9 +35,12 @@ async function run() {
     });
 
     core.setOutput('result_json', JSON.stringify(output));
-    core.setOutput('result_summary_table_json', JSON.stringify({
-      content: showResultsTable(output)
-    }));
+    core.setOutput(
+      'result_summary_table_json',
+      JSON.stringify({
+        content: showResultsTable(output)
+      })
+    );
   } catch (error) {
     core.setFailed(error.toString());
   }
@@ -50,11 +53,11 @@ function showResultsTable(results) {
   const maxTitleWidth = Math.max(availableWidth - usedWidth, 8);
 
   return table(rows, {
-      drawHorizontalLine: () => false,
-      border: getBorderCharacters('void'),
-      columnDefault: { paddingLeft: 0, paddingRight: 1 },
-      columns: { 2: { truncate: maxTitleWidth, width: maxTitleWidth } }
-    }).slice(0, -1);
+    drawHorizontalLine: () => false,
+    border: getBorderCharacters('void'),
+    columnDefault: { paddingLeft: 0, paddingRight: 1 },
+    columns: { 2: { truncate: maxTitleWidth, width: maxTitleWidth } }
+  }).slice(0, -1);
 }
 
 run();

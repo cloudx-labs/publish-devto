@@ -56,7 +56,8 @@
   },
   "prettier": {
     "trailingComma": "none",
-    "bracketSpacing": true
+    "bracketSpacing": true,
+    "endOfLine": "auto"
   },
   "engines": {
     "node": "^14.13.1 || >=16.0.0",

@@ -15,7 +15,7 @@
     "build": "node scripts/build.js",
     "test": "xo",
     "commit:build": "git add dist && git commit -m \"chore: update build\" && git push",
-    "tag": "git push --delete origin v3 && git tag -a v3 -m 'v3' && git push --tags",
+    "tag": "git tag -fa v3 -m 'v3' && git push --tags",
     "release": "npm run -s build && npm run -s commit:build && npm run -s tag"
   },
   "keywords": [
